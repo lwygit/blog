@@ -20,6 +20,9 @@
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="{{route('home')}}">首页</a>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{route('user.index')}}">用户列表</a>
+                </li>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -27,7 +30,7 @@
                     <a href="{{route('logout')}}" class="btn btn-danger my-2  my-sm-0 mr-2">退出</a>
                 @else
                     <a href="{{route('user.create')}}" class="btn btn-danger my-2  my-sm-0 mr-2">注册</a>
-                    <a class="btn btn-success my-2 my-sm-0">登陆</a>
+                    <a href="{{route('login')}}" class="btn btn-success my-2 my-sm-0">登陆</a>
                 @endauth
             </form>
         </div>

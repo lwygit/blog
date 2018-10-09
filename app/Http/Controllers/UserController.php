@@ -14,7 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::paginate(10);
+        return view('user.index', compact('users'));
     }
 
     /**
@@ -37,17 +38,17 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $data = $this->validate($request, [
-        'name' => 'required|min:3',
-        'email' => 'required|unique:users|email',
-        'password' => 'required|min:5|confirmed',
-        'password_confirmation' => 'required'
-    ]);
+            'name' => 'required|min:3',
+            'email' => 'required|unique:users|email',
+            'password' => 'required|min:5|confirmed',
+            'password_confirmation' => 'required'
+        ]);
         $data['password'] = bcrypt($data['password']);
         //添加用户
         User::create($data);
         //自动登陆
-        \Auth::attempt(['email'=> $request->email,'password'=>$request->password]);
-        session()->flash('success','注册成功，已经为您自动登陆系统');
+        \Auth::attempt(['email' => $request->email, 'password' => $request->password]);
+        session()->flash('success', '注册成功，已经为您自动登陆系统');
 
         return redirect()->route('home');
     }
@@ -58,9 +59,9 @@ class UserController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        return view('user.show',compact('user'));
     }
 
     /**
