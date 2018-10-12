@@ -23,10 +23,12 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="{{route('user.index')}}">用户列表</a>
                 </li>
-                </li>
+
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 @auth
+                    <a href="{{route('user.edit',auth()->user())}}" class="btn btn-light my-2  my-sm-0 mr-2">{{auth()->user()->name}}</a>
+                    <a href="{{route('user.edit',auth()->user())}}" class="btn btn-info my-2  my-sm-0 mr-2">修改资料</a>
                     <a href="{{route('logout')}}" class="btn btn-danger my-2  my-sm-0 mr-2">退出</a>
                 @else
                     <a href="{{route('user.create')}}" class="btn btn-danger my-2  my-sm-0 mr-2">注册</a>
