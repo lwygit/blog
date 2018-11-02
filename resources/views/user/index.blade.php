@@ -24,7 +24,7 @@
                                     @csrf @method('delete')
                                     <button type="submit" class="btn btn-danger">删除</button>
                                 </form>
-                                <button type="button" class="btn btn-info">修改</button>
+                                <a href="{{route('user.edit',$user)}}" class="btn btn-info my-2  my-sm-0 mr-2">修改资料</a>
                                 <a href="{{route('user.show',$user)}}" class="btn btn-secondary">查看</a>
                             </div>
                         </td>

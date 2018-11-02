@@ -2,7 +2,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            用户列表
+            文章列表
         </div>
         <div class="card-body">
             <table class="table">
@@ -20,12 +20,12 @@
                         <td>{{$blog['title']}}</td>
                         <td>
                             <div class="btn-group" role="group" aria-label="Basic example">
-                                {{--<form action="{{route('blog.destroy',$blog)}}" method="post">--}}
-                                    {{--@csrf @method('delete')--}}
-                                    {{--<button type="submit" class="btn btn-danger">删除</button>--}}
-                                {{--</form>--}}
-                                {{--<a href="{{route('user.edit',$user)}}" class="btn btn-info ">修改资料</a>--}}
-                                {{--<a href="{{route('user.show',$user)}}" class="btn btn-secondary">查看</a>--}}
+                                <form action="{{route('blog.destroy',$blog)}}" method="post">
+                                @csrf @method('delete')
+                                <button type="submit" class="btn btn-danger">删除</button>
+                                </form>
+                                <a href="{{route('blog.edit',$blog)}}" class="btn btn-info ">修改资料</a>
+                                <a href="{{route('blog.show',$blog)}}" class="btn btn-secondary">查看</a>
                             </div>
                         </td>
                     </tr>
@@ -34,7 +34,7 @@
             </table>
         </div>
         <div class="card-footer text-muted ">
-            {{--{{$users->links()}}--}}
+            {{$blogs->links()}}
         </div>
     </div>
 @endsection

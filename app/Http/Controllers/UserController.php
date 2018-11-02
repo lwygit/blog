@@ -10,13 +10,14 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth',[
-            'except'=>['index','show','create','store']
+        $this->middleware('auth', [
+            'except' => ['index', 'show', 'create', 'store']
         ]);
-        $this->middleware('guest',[
-            'only'=>['create','store']
+        $this->middleware('guest', [
+            'only' => ['create', 'store']
         ]);
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -81,7 +82,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        $this->authorize('update',$user);
+        //职能修改自己的
+        $this->authorize('update', $user);
         return view('user.edit', compact('user'));
     }
 
@@ -104,7 +106,7 @@ class UserController extends Controller
         }
         $user->save();
         session()->flash('success', '修改成功');
-        return redirect()->route('user.show',$user);
+        return redirect()->route('user.show', $user);
     }
 
     /**
@@ -116,7 +118,7 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        session()->flash('success','删除成功');
+        session()->flash('success', '删除成功');
         return redirect()->route('user.index');
     }
 }

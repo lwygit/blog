@@ -10,7 +10,7 @@
 <script type="/js/app.js"></script>
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="{{route('home')}}">梁文元的博客</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -18,16 +18,18 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{route('home')}}">首页</a>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{route('user.index')}}">用户列表</a>
-                </li>
+                {{--@auth()--}}
+                {{--<li class="nav-item active">--}}
+                {{--<a class="nav-link" href="{{route('user.index')}}">用户列表</a>--}}
+                {{--</li>--}}
+                {{--@endauth--}}
 
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 @auth
-                    <a href="{{route('user.edit',auth()->user())}}" class="btn btn-light my-2  my-sm-0 mr-2">{{auth()->user()->name}}</a>
+                    <a href="{{route('blog.create')}}" class="btn btn-info my-2  my-sm-0 mr-2">写文章</a>
+                    <a href="{{route('user.edit',auth()->user())}}"
+                       class="btn btn-light my-2  my-sm-0 mr-2">{{auth()->user()->name}}</a>
                     <a href="{{route('user.edit',auth()->user())}}" class="btn btn-info my-2  my-sm-0 mr-2">修改资料</a>
                     <a href="{{route('logout')}}" class="btn btn-danger my-2  my-sm-0 mr-2">退出</a>
                 @else
